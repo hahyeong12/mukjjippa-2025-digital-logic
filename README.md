@@ -6,7 +6,13 @@
 
 ## 작품 미리보기
 
-### 🎮 실제 Logisim 시연
+### 🎮 완성된 묵찌빠 게임 화면
+
+[<img src="circuit/images/Main_interface.png" alt="Logisim으로 구현한 묵찌빠 게임 화면과 다섯 가지 조작 버튼" width="760">](circuit/README.md)
+
+*화면을 클릭하면 내부 회로와 제작 과정까지 정리한 회로 갤러리로 이동합니다.*
+
+### ▶ 실제 Logisim 시연
 
 [![묵찌빠 Logisim 회로 시연 영상](https://img.youtube.com/vi/myTF7Nq_vY8/hqdefault.jpg)](https://youtu.be/myTF7Nq_vY8)
 
@@ -18,7 +24,7 @@
 
 *포스터 클릭 시 확대해서 볼 수 있습니다.*
 
-**[▶ 회로 직접 실행하기](circuit/README.md)** · [실행용 Logisim 파일](circuit/mukjjippa-main.circ) · [회로 설계 자세히 보기](docs/implementation.md)
+**[▶ 회로 갤러리와 실행 방법](circuit/README.md)** · [실행용 Logisim 파일](circuit/mukjjippa-main.circ) · [회로 설계 자세히 보기](docs/implementation.md)
 
 > 이 프로젝트의 작품은 웹 게임이 아닌 **Logisim-evolution으로 만든 디지털 논리회로(.circ)** 입니다. 회로 파일을 내려받아 Logisim에서 직접 조작할 수 있습니다.
 
