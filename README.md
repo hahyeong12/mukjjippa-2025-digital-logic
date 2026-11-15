@@ -4,16 +4,14 @@
 
 > **가위바위보의 승패만 계산하는 회로를 넘어, 누가 공격권을 가졌는지 기억하고, 비겼을 때 라운드 승패를 확정하며, 먼저 2승을 거둔 쪽의 최종 승리를 판정하는 묵찌빠 게임**을 디지털 논리회로로 구현했습니다.
 
-<p align="center">
-  <img src="assets/gameplay-player-win.png" alt="묵찌빠 프로젝트: YOU WIN LED 표시가 켜진 게임 화면" width="47%" />
-  <img src="assets/gameplay-computer-win.png" alt="묵찌빠 프로젝트: 컴퓨터 승리 표시가 켜진 게임 화면" width="47%" />
-</p>
+> **2025년 원본 회로 파일과 2026년 기술 검토를 먼저 공개했습니다.** 발표 포스터·실제 LED 게임 화면·보고서(PDF/PPTX/DOCX)는 별도 업로드용 패키지로 보존 중이며, GitHub에 아직 추가되지 않았습니다. [자료별 업로드 상태](docs/artifact-index.md)
+
 
 **핵심:** 순차논리(FSM·D Flip-Flop), 조합논리(승패 비교·Decoder), 점수 카운터, LED 디스플레이, 신호 전달 순서 디버깅을 하나의 게임으로 연결했습니다.
 
 ## 🕹️ 회로 열기
 
-**[▶ Logisim 회로 파일 — Main 화면으로 시작](circuit/mukjjippa-main.circ)** · [2025년 제출 당시 원본](archive/kim_hahyeong_original.circ) · [프로젝트 포스터 PDF](docs/submission/poster.pdf)
+**[▶ Logisim 회로 파일 — Main 화면으로 시작](circuit/mukjjippa-main.circ)** · [2025년 제출 당시 원본](archive/kim_hahyeong_original.circ) · [회로 구조 분석](docs/implementation.md)
 
 1. [Logisim-evolution](https://github.com/logisim-evolution/logisim-evolution/releases/tag/v3.9.0) **3.9.0**을 설치합니다.
 2. `circuit/mukjjippa-main.circ`를 다운로드하고 Logisim-evolution으로 엽니다.
@@ -87,16 +85,16 @@ flowchart TD
 
 ## 04. 포스터 및 제출 자료
 
-![2025년 디지털논리시스템 묵찌빠 텀프로젝트 발표 포스터](assets/poster-preview.jpg)
+> 2025년 제출 포스터와 최종 게임 화면은 업로드 패키지에 보존되어 있으나, **현재 GitHub에는 아직 바이너리 원본이 게시되지 않았습니다.** 파일이 반영된 뒤 이 자리에 실제 포스터 이미지를 추가할 예정입니다.
 
 | 자료 | 내용 |
 | --- | --- |
 | [Logisim 회로 (실행용)](circuit/mukjjippa-main.circ) | 시작 회로를 `Main`으로 설정한 2026년 편의 사본 |
 | [Logisim 회로 (2025년 원본)](archive/kim_hahyeong_original.circ) | 당시 제출 파일의 내용 그대로 보존 |
-| [발표 포스터 PDF](docs/submission/poster.pdf) | 회로 구성·문제 해결·최종 화면 |
-| [포스터 PPTX](docs/submission/poster.pptx) | 편집 가능한 발표 원본 |
-| [개인 보고서 PDF](docs/submission/reflection.pdf) | 당시 시행착오와 성찰 기록 |
-| [개인 보고서 DOCX](docs/submission/reflection.docx) | 편집 가능한 보고서 원본 |
+| 포스터 PDF / PPTX | 2025년 제출 원본: GitHub 추가 전, 별도 ZIP에 보존 |
+| 개인 보고서 PDF / DOCX | 2025년 제출 원본: GitHub 추가 전, 별도 ZIP에 보존 |
+| [회로 상세 구조](docs/implementation.md) | 실제 XML 및 발표 자료에 근거한 2026년 기술 설명 |
+| [원본 파일 및 업로드 상태](docs/artifact-index.md) | GitHub 반영 자료와 미반영 바이너리 구분 |
 | [2026년 정적 검증 기록](docs/verification.md) | 회로 파일 구조와 보존 상태에 대한 검증 |
 
 > **영상:** 2025년 당시 영상도 제출한 것으로 보고서에 기록되어 있지만, 이번에 제공된 파일에는 **동영상 자체가 포함되지 않았습니다.** 이후 원본을 찾으면 별도로 보존하고 README에 연결할 수 있습니다. 포스터의 QR 코드는 실제 영상으로 연결되는지 확인되지 않아 현재 README에 링크하지 않았습니다.
