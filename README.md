@@ -8,9 +8,11 @@
 
 [![묵찌빠 Logisim 원본 작품 시연 영상](https://img.youtube.com/vi/myTF7Nq_vY8/hqdefault.jpg)](https://youtu.be/myTF7Nq_vY8)
 
-**[▶ 묵찌빠 회로 시연 영상 보기 (YouTube)](https://youtu.be/myTF7Nq_vY8)** · [Logisim 회로 다운로드](circuit/mukjjippa-main.circ) · [회로 구현 설명](docs/implementation.md)
+▶ **위 썸네일을 클릭하면 실제 Logisim 묵찌빠 시연 영상(YouTube)으로 바로 이동합니다.**
 
-영상은 실제 Logisim-evolution 묵찌빠 작품을 보여주는 시연 자료로 제공된 **일부공개 YouTube 영상**입니다. 이미지 클릭 시 YouTube로 이동합니다. 본 저장소의 작품은 웹 게임이 아닌 **디지털 논리회로(.circ)** 입니다.
+[Logisim 회로 다운로드](circuit/mukjjippa-main.circ) · [회로 구현 설명](docs/implementation.md)
+
+이 프로젝트의 원본 작품은 **Logisim-evolution 디지털 논리회로(.circ)** 입니다.
 
 ## 1. 왜 묵찌빠였나?
 
@@ -86,7 +88,7 @@ flowchart TD
 
 제작 당시 발표 포스터에는 **Main과 19개 Subcircuit**, 초기·개선 FSM, 신호 전파 지연을 조정한 디버깅 과정, LED로 그린 게임 화면이 담겨 있습니다. 포스터 원본은 별도로 보관하고 있으며, 저장소에 게시할 이미지 파일은 아직 추가되지 않았습니다.
 
-실제 구현 결과는 **[묵찌빠 Logisim 시연 영상](https://youtu.be/myTF7Nq_vY8)** 에서 확인할 수 있습니다. 다른 언어로 구현한 웹 게임이나 재현 영상은 원본 회로 시연으로 소개하지 않습니다.
+실제 구현 결과는 README 상단의 **시연 영상 썸네일**을 눌러 확인할 수 있습니다. 다른 언어로 구현한 웹 게임이나 재현 영상은 원본 회로 시연으로 소개하지 않습니다.
 
 ---
 
