@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="143 234 278 280" role="img" aria-label="Rock">
+  <title>Rock — original Logisim custom appearance</title>
+  <ellipse cx="282" cy="373" rx="129" ry="129" stroke="#000000"/>
+      <ellipse cx="282" cy="375" fill="#ff0f1c" rx="97" ry="97" stroke="#000000"/>
+      <text dominant-baseline="central" fill="#ffffff" font-family="Press Start 2P" font-size="19" text-anchor="middle" x="287" y="374">Rock</text>
+</svg>
