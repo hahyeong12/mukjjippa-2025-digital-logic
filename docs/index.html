@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="description" content="디지털논리시스템 텀프로젝트: 묵찌빠의 공격권, 상태 기억, 3판 2선승 규칙을 브라우저에서 체험하세요."/>
+<title>묵찌빠 | 디지털논리시스템</title>
+<style>
+:root{--bg:#080e16;--panel:#121b29;--panel2:#0b1421;--border:#26394b;--text:#e7f2fb;--muted:#9ab1c6;--mint:#40e0ac;--blue:#4ba7ff;--red:#ff727d;--yellow:#ffd16a}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:radial-gradient(ellipse at top,#163049 0%,var(--bg) 58%);color:var(--text);font-family:system-ui,-apple-system,"Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+a{color:#9ed8ff}button,select{font:inherit}
+button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffd16a;outline-offset:3px}
+.wrap{max-width:1080px;margin:auto;padding:25px 20px 70px}
+.topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px}
+.brand{font-weight:900;letter-spacing:.06em;color:var(--mint);font-size:13px}
+.top-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.intro{padding:8px 0 26px}.eyebrow{font-size:12px;letter-spacing:.15em;font-weight:800;color:var(--yellow)}
+h1{font-size:clamp(34px,6.7vw,60px);line-height:1.07;margin:10px 0 12px;letter-spacing:-.055em}
+.intro p{max-width:780px;line-height:1.8;color:var(--muted);margin:0}
+.game-shell{border:1px solid #3b5871;border-radius:24px;padding:14px;background:linear-gradient(135deg,#273d52,#122334);box-shadow:0 35px 90px #0009,0 0 0 1px #ffffff0d}
+.panel{border-radius:17px;background:var(--panel2);border:1px solid #334c60;overflow:hidden}
+.display-head{background:#0e1d2c;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:17px 20px;border-bottom:1px solid var(--border)}
+.display-head strong{letter-spacing:.13em;font-size:13px}
+.status-chip{display:inline-flex;align-items:center;gap:8px;color:var(--mint);font-size:12px;font-weight:800}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 15px var(--mint)}
+.scorebar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;max-width:680px;margin:20px auto 6px;text-align:center}
+.score-name{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.1em}
+.score-num{font-variant-numeric:tabular-nums;font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.1;margin-top:3px}
+.score-label{font-size:12px;color:#7890a4}
+.score-divider{font-weight:900;font-size:23px;color:#5e7487}
+.arena{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px}
+.hand-card{border:1px solid #294357;background:#101e2e;border-radius:17px;padding:24px 10px 22px;min-height:200px;text-align:center}
+.hand-label{color:#a9c2d7;font-size:12px;letter-spacing:.12em;font-weight:800}
+.hand-emoji{font-size:clamp(58px,10vw,100px);line-height:1.35;filter:drop-shadow(0 8px 15px #0009)}
+.hand-text{font-size:17px;font-weight:900}
+.hand-card.player .hand-text{color:var(--blue)}
+.hand-card.computer .hand-text{color:var(--red)}
+.state{margin:0 18px 18px;padding:16px;border:1px solid #2c5160;background:#12242d;border-radius:12px;text-align:center}
+.state-title{font-size:12px;letter-spacing:.13em;color:#aac7d4;font-weight:800}
+.attacker{font-weight:900;color:var(--yellow);font-size:24px;margin-top:4px}
+.result{margin:9px auto 0;line-height:1.6;font-size:14px;color:#d1e3f1;max-width:700px}
+.controls{display:grid;gap:14px;padding:23px 20px 18px;border-top:1px solid #253c4e;background:#0f1b29}
+.instruction{font-weight:800;font-size:14px}
+.hand-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hand-buttons button{padding:16px 10px;border-radius:12px;border:1px solid #41607e;background:#1b3045;color:white;font-weight:850;transition:transform .12s,background .12s}
+.hand-buttons button:hover:not(:disabled){transform:translateY(-2px);background:#244965}
+.hand-buttons button:disabled{opacity:.42;cursor:not-allowed}
+.hand-buttons .symbol{display:block;font-size:30px;margin-bottom:5px}
+.options{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.optionline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.optionline label{font-size:12px;color:var(--muted)}
+select{background:#192b3f;color:#e8f5ff;border:1px solid #526c82;border-radius:8px;padding:8px 10px}
+.reset{border:1px solid #566577;background:#16263a;border-radius:9px;color:#e4eff7;font-weight:800;padding:10px 16px}
+.reset:hover{background:#294159}
+.logs{margin-top:18px;background:#0e1825;border:1px solid #284052;border-radius:16px;padding:18px 20px}
+.logs h2,.explain h2{font-size:19px;margin:0 0 10px}
+#history{padding:0;margin:0;list-style:none;max-height:210px;overflow:auto}
+#history li{border-top:1px solid #263443;padding:9px 0;line-height:1.5;font-size:13px;color:#c1d2e1}
+#history li:first-child{border:0}
+.turn{color:var(--yellow);font-weight:850;margin-right:8px}
+.no-history{color:var(--muted);font-size:13px}
+.explain{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.explain section{background:#0f1b29;border:1px solid #283e51;border-radius:16px;padding:22px}
+.explain p{color:#b7c9d7;font-size:14px;line-height:1.8}
+.flowline{font-size:13px;color:var(--mint);line-height:2;font-weight:800}
+.note{margin-top:22px;border-left:3px solid var(--yellow);background:#151f28;padding:12px 16px;color:#bcd0df;font-size:13px;line-height:1.8}
+footer{color:#8fa6b9;margin-top:26px;font-size:12px}
+@media(max-width:680px){.wrap{padding:18px 10px 45px}.arena{gap:9px;padding:10px}.hand-card{padding:18px 8px;min-height:165px}.game-shell{padding:7px}.explain{grid-template-columns:1fr}.controls{padding:17px 12px}.hand-buttons button{font-size:13px}.scorebar{gap:8px}.state{margin:0 10px 10px}.top-links{gap:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+ <header class="topbar">
+  <span class="brand">DIGITAL LOGIC × MUK JJI PPA</span>
+  <nav class="top-links" aria-label="관련 자료">
+    <a href="https://github.com/hahyeong12/mukjjippa-2025-digital-logic">GitHub / README</a>
+    <a href="https://github.com/hahyeong12/mukjjippa-2025-digital-logic/blob/main/circuit/mukjjippa-main.circ">원본 회로 열기</a>
+    <a href="https://github.com/hahyeong12/mukjjippa-2025-digital-logic/blob/main/docs/implementation.md">회로 설명</a>
+  </nav>
+ </header>
+ <section class="intro">
+  <div class="eyebrow">2025 · DIGITAL LOGIC CIRCUIT TERM PROJECT · 만점</div>
+  <h1>가위바위보의 다음 단계,<br/>묵찌빠.</h1>
+  <p>한 번 이기는 것으로 끝나지 않습니다. 공격권을 <strong>기억</strong>하고, 공격 중에 <strong>비기면 득점</strong>합니다. 직접 만든 Logisim 프로젝트의 게임 규칙을 웹에서도 체험해 보세요.</p>
+ </section>
+ <div class="game-shell">
+  <div class="panel">
+   <div class="display-head"><strong>MUK JJI PPA / GAME DISPLAY</strong><span class="status-chip"><span class="dot"></span><span id="mode-status">READY TO PLAY</span></span></div>
+   <div class="scorebar">
+    <div><div class="score-name">YOU</div><div class="score-num" id="player-score">0</div><div class="score-label">먼저 2점 획득</div></div>
+    <div class="score-divider">:</div>
+    <div><div class="score-name">COMPUTER</div><div class="score-num" id="computer-score">0</div><div class="score-label">먼저 2점 획득</div></div>
+   </div>
+   <div class="arena">
+    <div class="hand-card player"><div class="hand-label">PLAYER</div><div class="hand-emoji" id="player-icon" aria-hidden="true">?</div><div class="hand-text" id="player-hand">선택 전</div></div>
+    <div class="hand-card computer"><div class="hand-label">COMPUTER</div><div class="hand-emoji" id="computer-icon" aria-hidden="true">?</div><div class="hand-text" id="computer-hand">선택 전</div></div>
+   </div>
+   <div class="state" aria-live="polite"><div class="state-title">CURRENT ATTACKER / 공격권</div><div class="attacker" id="attacker">없음</div><p class="result" id="message">손 모양을 선택하면 첫 승부가 시작됩니다.</p></div>
+   <div class="controls">
+    <div class="instruction">어떤 손을 내시겠습니까?</div>
+    <div class="hand-buttons" role="group" aria-label="내 손 모양">
+      <button type="button" data-hand="S"><span class="symbol" aria-hidden="true">✌️</span>가위 <small>(1)</small></button>
+      <button type="button" data-hand="R"><span class="symbol" aria-hidden="true">✊</span>바위 <small>(2)</small></button>
+      <button type="button" data-hand="P"><span class="symbol" aria-hidden="true">✋</span>보 <small>(3)</small></button>
+    </div>
+    <div class="options">
+      <div class="optionline"><label for="computer-mode">컴퓨터 선택</label><select id="computer-mode"><option value="random">랜덤</option><option value="manual">직접 지정 (회로 규칙 실험)</option></select>
+        <select id="manual-hand" aria-label="컴퓨터 손 지정" hidden><option value="S">컴퓨터: 가위</option><option value="R">컴퓨터: 바위</option><option value="P">컴퓨터: 보</option></select>
+      </div>
+      <button class="reset" type="button" id="restart">↻ 처음부터 다시</button>
+    </div>
+   </div>
+  </div>
+ </div>
+ <section class="logs" aria-label="게임 진행 기록"><h2>진행 기록</h2><ol id="history"><li class="no-history">아직 진행한 승부가 없습니다.</li></ol></section>
+ <div class="explain">
+  <section><h2>왜 단순 가위바위보와 다를까요?</h2><p>이전 승부에서 누가 이겼는지 <strong>공격권 상태</strong>를 저장해야 합니다. 공격권을 가진 플레이어가 이후 비겼을 때만 1점을 얻고, 2점을 먼저 얻으면 게임이 끝납니다.</p><div class="flowline">손 선택 → 승패 비교 → 공격권 기억 → 비김 판정 → 점수 누적</div></section>
+  <section><h2>이 화면과 실제 Logisim 회로의 관계</h2><p>지금 보고 계신 화면은 <strong>규칙 체험용 웹 재구현</strong>입니다. 실제 수업 작품은 Logisim-evolution에서 FSM, D Flip-Flop, Score Counter, LED 327개를 연결한 회로입니다. 원본은 위의 ‘원본 회로 열기’에서 확인할 수 있습니다.</p></section>
+ </div>
+ <div class="note"><strong>프로젝트 배경</strong> — 교수님의 “하루 만에 끝낼 수 없는 노력과 공부의 흔적”이라는 요구를 듣고, 평범한 가위바위보를 오히려 상태 저장이 필요한 묵찌빠로 확장했습니다. 디지털논리시스템 텀프로젝트 <strong>만점</strong>을 받았습니다.</div>
+ <footer>Seoul National University of Science and Technology · Digital Logic Circuit · 2025</footer>
+</main>
+<script type="module">
+import { HANDS, createGame, nextGame } from "./logic.mjs";
+let game=createGame();
+const el=(id)=>document.getElementById(id);
+const buttons=[...document.querySelectorAll("[data-hand]")];
+const choices=["S","R","P"];
+function render(){
+  el("player-score").textContent=game.score.player;
+  el("computer-score").textContent=game.score.computer;
+  el("mode-status").textContent=game.winner ? "GAME FINISHED" : game.attacker ? "MUK JJI PPA" : "ROUND READY";
+  el("attacker").textContent=game.winner ? (game.winner==="player" ? "YOU WIN!" : "COMPUTER WIN") : game.attacker==="player" ? "플레이어 공격" : game.attacker==="computer" ? "컴퓨터 공격" : "없음";
+  el("message").textContent=game.last ? game.last.message : "손 모양을 선택하면 첫 승부가 시작됩니다.";
+  if(game.last){
+    el("player-icon").textContent=HANDS[game.last.playerHand].icon;
+    el("computer-icon").textContent=HANDS[game.last.computerHand].icon;
+    el("player-hand").textContent=HANDS[game.last.playerHand].label;
+    el("computer-hand").textContent=HANDS[game.last.computerHand].label;
+  }else{
+    el("player-icon").textContent="?";el("computer-icon").textContent="?";
+    el("player-hand").textContent="선택 전";el("computer-hand").textContent="선택 전";
+  }
+  for(const button of buttons)button.disabled=!!game.winner;
+  const history=el("history");
+  history.replaceChildren();
+  if(!game.history.length){
+    const li=document.createElement("li");li.className="no-history";
+    li.textContent="아직 진행한 승부가 없습니다.";history.append(li);
+  }else for(const event of game.history){
+    const li=document.createElement("li");
+    const label=document.createElement("span");label.className="turn";
+    label.textContent=String(event.turn).padStart(2,"0");
+    const description=document.createElement("span");
+    description.textContent=" YOU "+HANDS[event.playerHand].label+" / COM "+HANDS[event.computerHand].label+" — "+event.message;
+    li.append(label,description);history.append(li);
+  }
+}
+function makeTurn(hand){
+  if(game.winner)return;
+  const choice=el("computer-mode").value==="manual" ? el("manual-hand").value : choices[Math.floor(Math.random()*3)];
+  game=nextGame(game,hand,choice);
+  render();
+}
+buttons.forEach(button=>button.addEventListener("click",()=>makeTurn(button.dataset.hand)));
+el("computer-mode").addEventListener("change",()=>{el("manual-hand").hidden=el("computer-mode").value!=="manual";});
+el("restart").addEventListener("click",()=>{game=createGame();render();});
+document.addEventListener("keydown",(event)=>{
+  if(event.altKey||event.ctrlKey||event.metaKey||event.repeat||["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName))return;
+  const hand=({"1":"S","2":"R","3":"P"})[event.key];
+  if(hand)makeTurn(hand);
+});
+render();
+</script>
+</body>
+</html>
