@@ -1,0 +1,30 @@
+name: Verify Logisim Archive
+
+# This verification was added in 2026, not during the 2025 coursework.
+on:
+  push:
+    paths:
+      - "archive/*.circ"
+      - "circuit/*.circ"
+      - "scripts/validate_circuit.py"
+      - ".github/workflows/verify-logisim-archive.yml"
+  pull_request:
+    paths:
+      - "archive/*.circ"
+      - "circuit/*.circ"
+      - "scripts/validate_circuit.py"
+      - ".github/workflows/verify-logisim-archive.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out historical circuit
+        uses: actions/checkout@v4
+      - name: Check circuit XML and original-file preservation
+        run: python3 scripts/validate_circuit.py
