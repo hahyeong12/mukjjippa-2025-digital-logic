@@ -46,6 +46,7 @@ try {
     "-crf","31","-movflags","+faststart","-an",
     "docs/media/web-demo.mp4",
   ],{stdio:"inherit"});
+  if(result.error)throw result.error;
   if(result.status!==0)throw new Error("ffmpeg failed with exit status "+result.status);
   console.log("Recorded browser demo: docs/media/web-demo.mp4");
 } catch(error){
