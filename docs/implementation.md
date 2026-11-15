@@ -69,6 +69,6 @@ Logisim으로 오락기 화면을 그대로 꾸미기 어려워 **LED 327개를 
 
 ## 설계 파일
 
-[실행용 회로](../circuit/mukjjippa-main.circ) · [제출 원본 회로](../archive/kim_hahyeong_original.circ) · [웹 게임 체험](index.html)
+[실행용 회로](../circuit/mukjjippa-main.circ) · [제출 원본 회로](../archive/kim_hahyeong_original.circ) · [실제 Logisim 시연 영상](https://youtu.be/myTF7Nq_vY8)
 
 포스터에는 **Main + 19개 Subcircuit**으로 설명했고, 현재 원본 파일에는 이전 설계와 실험용 회로까지 포함해 27개 회로 정의가 남아 있습니다. 초기 FSM 회로들도 설계 과정을 보여주는 자료입니다.
