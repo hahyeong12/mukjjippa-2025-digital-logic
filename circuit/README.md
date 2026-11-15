@@ -2,7 +2,7 @@
 
 **2025년 2학기 · 디지털논리시스템 · 개인 텀프로젝트 · Logisim-evolution 3.9.0**
 
-이 페이지는 게임을 구성한 **실제 Logisim 회로와 제작 과정의 실험 회로**를 보여줍니다. 이미지는 회로를 읽기 쉽게 모아둔 자료이며, 실제 플레이는 아래 `.circ` 파일로 진행합니다.
+게임의 입력부터 승패 판단, 공격권 기억, 점수 기록, LED 출력까지 **Logisim에서 구현한 각 회로와 설계 과정**을 소개합니다.
 
 **[▶ 실행용 회로 다운로드](mukjjippa-main.circ)** · [2025년 원본 파일](../archive/kim_hahyeong_original.circ) · [프로젝트 메인으로](../README.md)
 
@@ -10,7 +10,7 @@
 
 <img src="images/Main_interface.png" alt="Main의 실제 묵찌빠 게임 화면과 가위·바위·보·진행 버튼" width="770">
 
-게임 화면은 LED로 손 모양과 결과를 표현하고, 아래의 버튼으로 가위·바위·보와 게임 진행을 조작합니다. **위 이미지는 Main 전체 화면 중 게임 UI 부분만 잘라낸 보기용 이미지**입니다.
+게임 화면은 LED로 손 모양과 결과를 표현하고, 아래의 버튼으로 가위·바위·보와 게임 진행을 조작합니다.
 
 <details>
 <summary><strong>Main 전체 회로와 하단 내부 배선 펼쳐보기</strong></summary>
@@ -106,27 +106,23 @@ Flip-Flop과 게이트 조합으로 컴퓨터의 손 선택 신호를 생성하�
 
 Flip-Flop으로 결과 표시용 점멸 신호를 생성합니다.
 
-### 사용자 정의 버튼·제목 (Custom Appearance)
+### 게임 인터페이스 — 직접 제작한 버튼과 제목
 
-이 다섯 버튼은 일반 회로가 아니라 `.circ` 파일의 **Custom Appearance에 직접 그린 원·글씨**로 구성되어 있습니다. 따라서 Logisim의 `Export Image` 목록에 나타나지 않습니다. 원본의 벡터 도형을 추출한 **SVG 이미지**를 아래에서 각각 확인하고 내려받을 수 있습니다.
+가위·바위·보 선택 버튼과 게임 진행 버튼도 직접 디자인했습니다. 원형 버튼에 색상을 달리하고, 게임의 제목은 무지개색 글자로 구성했습니다.
 
-| 가위 (`Button_S`) | 바위 (`Button_R`) | 보 (`Button_P`) |
+| 가위 | 바위 | 보 |
 |:---:|:---:|:---:|
 | [![가위 버튼](images/buttons/Button_S.svg)](images/buttons/Button_S.svg) | [![바위 버튼](images/buttons/Button_R.svg)](images/buttons/Button_R.svg) | [![보 버튼](images/buttons/Button_P.svg)](images/buttons/Button_P.svg) |
 
-| 계속 (`Button_Continue`) | 시작 (`Button_Play`) |
+| 계속 | 시작 |
 |:---:|:---:|
 | [![Continue 버튼](images/buttons/Button_Continue.svg)](images/buttons/Button_Continue.svg) | [![Play 버튼](images/buttons/Button_Play.svg)](images/buttons/Button_Play.svg) |
 
-**[무지개색 제목 SVG](images/buttons/Title.svg)** · [배경 SVG](images/buttons/BackGround.svg)
-
-이 SVG들은 2026년 포트폴리오 정리 과정에서 원본 `.circ`의 `<appear>` 도형을 추출한 미리보기입니다. Logisim의 특수 기준점인 `circ-anchor`는 그림에서 제외했습니다. 원본 회로와 사용자 정의 외형은 변경하지 않았습니다. SVG를 보는 환경에 `Press Start 2P` 글꼴이 없으면 글씨 모양은 달라질 수 있습니다.
-
-`painting`, `Line_Black` 역시 `.circ` 안에 보존돼 있습니다. 버튼 외형과 게임 화면은 상단의 Main 이미지에서도 볼 수 있습니다.
+**[게임 제목 보기](images/buttons/Title.svg)** · [배경 보기](images/buttons/BackGround.svg)
 
 ## 6. 제작 과정에 남긴 실험·대안 회로
 
-원본 `.circ`에는 현재 설명한 주요 회로 외에도 다양한 이름의 실험 회로가 남아 있습니다. **`_rip`와 `GUI_test`는 파일 안에 실제로 존재하는 회로 이름**이며, 여기서는 완성본의 동작을 대신하는 것이 아니라 설계와 시행착오의 기록으로 소개합니다. 이름만으로 정확한 제작 순서를 확정하지는 않습니다.
+FSM 상태 설계와 승패 판정, LED 표현을 여러 방식으로 시도했습니다. 아래는 **문제를 해결하는 과정에서 남겨 둔 회로들**입니다. 초기 구성의 복잡성과 개선 방향을 함께 살펴볼 수 있습니다.
 
 <details>
 <summary><strong>FSM 상태 설계 실험 3장 펼쳐보기</strong></summary>
@@ -193,8 +189,6 @@ LED를 일일이 배치하고 신호를 연결하면서 손 형태를 구현하�
 3. Logisim에서 **File → Open**을 선택해 회로 파일을 엽니다.
 4. 왼쪽 회로 목록에서 **Main**을 선택하고, 게임 화면의 가위·바위·보 및 진행 버튼을 조작합니다.
 
-> `.circ`는 **여러 Subcircuit을 포함한 하나의 Logisim 프로젝트 파일**입니다. GitHub에서 파일을 직접 클릭했을 때 XML 코드가 표시되는 것은 정상이고, 회로가 빠진 것이 아닙니다.
-
-**보존 원칙:** 이 갤러리는 2026년에 정리한 설명 자료입니다. 당시 실제 회로는 [2025년 제출 원본](../archive/kim_hahyeong_original.circ)에 보존했고, [실행용 사본](mukjjippa-main.circ)은 시작 회로가 Main으로 열리도록 설정한 파일입니다.
+> `.circ` 파일 하나에 Main과 모든 Subcircuit이 함께 들어 있습니다. [당시 제출한 원본 회로](../archive/kim_hahyeong_original.circ)도 별도로 제공됩니다.
 
 ← [프로젝트 소개와 시연 영상](../README.md) · [회로별 설계 설명](../docs/implementation.md) · [개발 회고](../docs/retrospective.md)
