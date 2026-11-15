@@ -1,0 +1,41 @@
+name: Record browser demonstration
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/record-web-demo.mjs"
+      - ".github/workflows/record-web-demo.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install browser runner
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Start local browser demo server
+        run: |
+          python3 -m http.server 8765 --directory docs >/tmp/mukjjippa-demo-http.log 2>&1 &
+      - name: Record real web-demo interactions and final screenshot
+        run: node scripts/record-web-demo.mjs
+      - name: Commit resulting media to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/media/web-demo.mp4 docs/media/web-demo-final.png
+          if git diff --cached --quiet; then
+            echo "No new media to commit"
+          else
+            git commit -m "media: publish playable browser demonstration recording"
+            git push origin HEAD:main
+          fi
