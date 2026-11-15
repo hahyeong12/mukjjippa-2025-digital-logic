@@ -112,11 +112,11 @@ Flip-Flop으로 결과 표시용 점멸 신호를 생성합니다.
 
 | 가위 | 바위 | 보 |
 |:---:|:---:|:---:|
-| [![가위 버튼](images/buttons/Button_S.svg)](images/buttons/Button_S.svg) | [![바위 버튼](images/buttons/Button_R.svg)](images/buttons/Button_R.svg) | [![보 버튼](images/buttons/Button_P.svg)](images/buttons/Button_P.svg) |
+| [<img src="images/buttons/Button_S.svg" alt="가위 버튼" width="180" height="180">](images/buttons/Button_S.svg) | [<img src="images/buttons/Button_R.svg" alt="바위 버튼" width="180" height="180">](images/buttons/Button_R.svg) | [<img src="images/buttons/Button_P.svg" alt="보 버튼" width="180" height="180">](images/buttons/Button_P.svg) |
 
 | 계속 | 시작 |
 |:---:|:---:|
-| [![Continue 버튼](images/buttons/Button_Continue.svg)](images/buttons/Button_Continue.svg) | [![Play 버튼](images/buttons/Button_Play.svg)](images/buttons/Button_Play.svg) |
+| [<img src="images/buttons/Button_Continue.svg" alt="Continue 버튼" width="180" height="180">](images/buttons/Button_Continue.svg) | [<img src="images/buttons/Button_Play.svg" alt="Play 버튼" width="180" height="180">](images/buttons/Button_Play.svg) |
 
 **[게임 제목 보기](images/buttons/Title.svg)** · [배경 보기](images/buttons/BackGround.svg)
 
