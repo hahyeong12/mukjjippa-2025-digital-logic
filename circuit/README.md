@@ -106,9 +106,23 @@ Flip-Flop과 게이트 조합으로 컴퓨터의 손 선택 신호를 생성하�
 
 Flip-Flop으로 결과 표시용 점멸 신호를 생성합니다.
 
-### 버튼과 화면용 회로도 프로젝트 안에 포함
+### 사용자 정의 버튼·제목 (Custom Appearance)
 
-`painting`, `Line_Black`, `Title`, `BackGround`, `Button_S`, `Button_R`, `Button_P`, `Button_Play`, `Button_Continue`도 **실제 `.circ` 파일에 들어 있는 별도 회로 정의**입니다. 각 버튼의 별도 PNG가 없더라도 다운로드한 Logisim 프로젝트에서 확인할 수 있습니다. Main 스크린샷은 이 화면 구성까지 함께 보여줍니다.
+이 다섯 버튼은 일반 회로가 아니라 `.circ` 파일의 **Custom Appearance에 직접 그린 원·글씨**로 구성되어 있습니다. 따라서 Logisim의 `Export Image` 목록에 나타나지 않습니다. 원본의 벡터 도형을 추출한 **SVG 이미지**를 아래에서 각각 확인하고 내려받을 수 있습니다.
+
+| 가위 (`Button_S`) | 바위 (`Button_R`) | 보 (`Button_P`) |
+|:---:|:---:|:---:|
+| [![가위 버튼](images/buttons/Button_S.svg)](images/buttons/Button_S.svg) | [![바위 버튼](images/buttons/Button_R.svg)](images/buttons/Button_R.svg) | [![보 버튼](images/buttons/Button_P.svg)](images/buttons/Button_P.svg) |
+
+| 계속 (`Button_Continue`) | 시작 (`Button_Play`) |
+|:---:|:---:|
+| [![Continue 버튼](images/buttons/Button_Continue.svg)](images/buttons/Button_Continue.svg) | [![Play 버튼](images/buttons/Button_Play.svg)](images/buttons/Button_Play.svg) |
+
+**[무지개색 제목 SVG](images/buttons/Title.svg)** · [배경 SVG](images/buttons/BackGround.svg)
+
+이 SVG들은 2026년 포트폴리오 정리 과정에서 원본 `.circ`의 `<appear>` 도형을 추출한 미리보기입니다. Logisim의 특수 기준점인 `circ-anchor`는 그림에서 제외했습니다. 원본 회로와 사용자 정의 외형은 변경하지 않았습니다. SVG를 보는 환경에 `Press Start 2P` 글꼴이 없으면 글씨 모양은 달라질 수 있습니다.
+
+`painting`, `Line_Black` 역시 `.circ` 안에 보존돼 있습니다. 버튼 외형과 게임 화면은 상단의 Main 이미지에서도 볼 수 있습니다.
 
 ## 6. 제작 과정에 남긴 실험·대안 회로
 
