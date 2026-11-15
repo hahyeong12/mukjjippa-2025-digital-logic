@@ -1,0 +1,7 @@
+# Logisim and OS temporary files
+*.bak
+*.circ~
+*.autosave
+.DS_Store
+Thumbs.db
+__pycache__/
