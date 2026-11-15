@@ -4,16 +4,25 @@
 
 > **“단순 가위바위보라면 최하점”이라는 말에서 출발해, 오히려 가위바위보를 발전시켜 보자고 생각했습니다.** 공격권을 기억하는 묵찌빠, 3판 2선승, 점수 기록, LED 손 모양과 결과 표시까지 직접 회로로 만들었습니다.
 
-### 🎬 실제 Logisim 회로 시연
+## 작품 미리보기
 
-[![묵찌빠 Logisim 원본 작품 시연 영상](https://img.youtube.com/vi/myTF7Nq_vY8/hqdefault.jpg)](https://youtu.be/myTF7Nq_vY8)
+### 🎮 실제 Logisim 시연
 
-▶ **시연 영상 바로가기** (위 썸네일 클릭)
+[![묵찌빠 Logisim 회로 시연 영상](https://img.youtube.com/vi/myTF7Nq_vY8/hqdefault.jpg)](https://youtu.be/myTF7Nq_vY8)
 
-**[▶ 회로 파일 받기](circuit/mukjjippa-main.circ)** · [실행 방법](circuit/README.md) · [회로 구현 설명](docs/implementation.md)
+▶ **시연 영상 바로가기** (썸네일 클릭)
 
-이 프로젝트는 웹 게임이 아닌 **Logisim-evolution 디지털 논리회로(.circ)** 로 제작했습니다. 회로 파일을 내려받아 Logisim에서 직접 플레이할 수 있습니다.
+### 🖼️ 발표 포스터
 
+[<img src="docs/poster.png" width="720" alt="디지털논리시스템 묵찌빠 발표 포스터 — 주요 회로, 디버깅 과정, 최종 LED 게임 화면">](docs/poster.png)
+
+*포스터 클릭 시 확대해서 볼 수 있습니다.*
+
+**[▶ 회로 직접 실행하기](circuit/README.md)** · [실행용 Logisim 파일](circuit/mukjjippa-main.circ) · [회로 설계 자세히 보기](docs/implementation.md)
+
+> 이 프로젝트의 작품은 웹 게임이 아닌 **Logisim-evolution으로 만든 디지털 논리회로(.circ)** 입니다. 회로 파일을 내려받아 Logisim에서 직접 조작할 수 있습니다.
+
+---
 ## 1. 왜 묵찌빠였나?
 
 교수님은 텀프로젝트에서 구현 주제와 난이도는 자유롭게 정하되, **하루 만에 만들 수 없는 작품, 공부와 노력의 흔적이 드러나는 작품**을 기대한다고 하셨습니다. 또 단순 가위바위보를 구현한다면 최하점을 받을 수 있다는 말씀도 하셨습니다.
@@ -74,25 +83,15 @@ flowchart TD
 
 [**기획 계기와 디버깅 과정 자세히 읽기**](docs/retrospective.md)
 
-## 5. 작품 살펴보기
-
-### 원본 Logisim 회로 직접 실행하기
+## 5. 직접 실행과 원본 자료
 
 1. [Logisim-evolution 3.9.0](https://github.com/logisim-evolution/logisim-evolution/releases/tag/v3.9.0)을 설치합니다.
-2. **[실행용 묵찌빠 회로 (.circ)](circuit/mukjjippa-main.circ)** 페이지에서 **Download raw file**을 눌러 저장합니다.
-3. Logisim에서 **File → Open**으로 다운로드한 `.circ` 파일을 열고, **Main**의 가위·바위·보 버튼과 게임 진행 버튼을 조작합니다.
+2. [실행용 회로 (.circ)](circuit/mukjjippa-main.circ) 파일 화면에서 **Download raw file**을 눌러 저장합니다.
+3. Logisim에서 **File → Open**으로 해당 파일을 열고 **Main** 화면의 버튼을 조작합니다.
 
-> GitHub는 `.circ` 파일의 회로 화면이나 시뮬레이터를 제공하지 않으므로 파일을 클릭하면 XML 텍스트가 보일 수 있습니다. 실제 동작을 보려면 Logisim-evolution에서 열어야 합니다. [자세한 실행 안내](circuit/README.md)
+GitHub에서 `.circ` 파일을 누르면 회로 대신 XML 텍스트가 보일 수 있습니다. [실행 안내와 이미지가 있는 circuit 폴더](circuit/README.md)에서 시작하는 것이 편리합니다.
 
-[2025년 제출 회로 원본](archive/kim_hahyeong_original.circ)도 보존했습니다. 원본에서는 시작 회로가 다른 테스트용 서브회로로 설정돼 있어, 편의를 위해 **Main으로 시작하는 사본**을 별도로 제공합니다.
-
-### 발표 포스터
-
-[<img src="docs/poster.png" alt="2025년 묵찌빠 디지털논리시스템 프로젝트 발표 포스터: 회로 설계와 LED 게임 화면" width="680">](docs/poster.png)
-
-*포스터를 클릭하면 큰 이미지로 볼 수 있습니다.* 포스터에는 **Main과 19개 Subcircuit**, 초기·개선 FSM, 신호 전파 지연을 조정한 디버깅 과정, LED로 제작한 최종 게임 화면이 담겨 있습니다.
-
-실제 Logisim 회로 동작은 README 상단의 **시연 영상**에서 볼 수 있습니다. 다른 언어로 구현한 웹 게임이나 재현 영상은 원본 회로 시연으로 소개하지 않습니다.
+[2025년 제출 원본](archive/kim_hahyeong_original.circ)은 별도로 보존했습니다. 실행용 파일은 시작 화면을 Main으로 설정한 사본입니다.
 
 ---
 
