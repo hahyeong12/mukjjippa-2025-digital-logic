@@ -26,6 +26,12 @@ jobs:
       - name: Start local browser demo server
         run: |
           python3 -m http.server 8765 --directory docs >/tmp/mukjjippa-demo-http.log 2>&1 &
+      - name: Install video encoder
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
       - name: Record real web-demo interactions and final screenshot
         run: node scripts/record-web-demo.mjs
       - name: Commit resulting media to main
