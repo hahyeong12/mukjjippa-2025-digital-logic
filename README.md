@@ -8,7 +8,7 @@
 
 [![묵찌빠 Logisim 원본 작품 시연 영상](https://img.youtube.com/vi/myTF7Nq_vY8/hqdefault.jpg)](https://youtu.be/myTF7Nq_vY8)
 
-▶ **위 썸네일을 클릭하면 실제 Logisim 묵찌빠 시연 영상(YouTube)으로 바로 이동합니다.**
+▶ **시연 영상 바로가기** (위 썸네일 클릭)
 
 [Logisim 회로 다운로드](circuit/mukjjippa-main.circ) · [회로 구현 설명](docs/implementation.md)
 
