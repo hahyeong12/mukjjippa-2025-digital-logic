@@ -121,7 +121,12 @@ footer{color:#8fa6b9;margin-top:26px;font-size:12px}
   <section><h2>이 화면과 실제 Logisim 회로의 관계</h2><p>지금 보고 계신 화면은 <strong>규칙 체험용 웹 재구현</strong>입니다. 실제 수업 작품은 Logisim-evolution에서 FSM, D Flip-Flop, Score Counter, LED 327개를 연결한 회로입니다. 원본은 위의 ‘원본 회로 열기’에서 확인할 수 있습니다.</p></section>
  </div>
  <div class="note"><strong>프로젝트 배경</strong> — 교수님의 “하루 만에 끝낼 수 없는 노력과 공부의 흔적”이라는 요구를 듣고, 평범한 가위바위보를 오히려 상태 저장이 필요한 묵찌빠로 확장했습니다. 디지털논리시스템 텀프로젝트 <strong>만점</strong>을 받았습니다.</div>
- <footer>Seoul National University of Science and Technology · Digital Logic Circuit · 2025</footer>
+ <section class="logs" style="margin-top:24px" aria-label="브라우저 데모 녹화">
+  <h2>웹 데모 플레이 영상</h2>
+  <p style="font-size:13px;line-height:1.7;color:#b7c9d7">공격권을 얻은 후 비김으로 득점하고, 2승을 달성하는 장면입니다. 아래 영상은 <strong>위 웹 체험판을 실제로 조작해 녹화한 것</strong>으로, Logisim 원본 회로의 실행 영상은 아닙니다.</p>
+  <video controls playsinline preload="metadata" poster="./media/web-demo-final.png" style="display:block;max-width:100%;height:auto;border-radius:12px;background:#000" aria-label="묵찌빠 웹 체험판 플레이 영상"><source src="./media/web-demo.mp4" type="video/mp4"/>동영상 재생을 지원하는 브라우저에서 확인할 수 있습니다.</video>
+</section>
+<footer>Seoul National University of Science and Technology · Digital Logic Circuit · 2025</footer>
 </main>
 <script type="module">
 import { HANDS, createGame, nextGame } from "./logic.mjs";
